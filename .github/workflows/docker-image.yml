@@ -13,8 +13,6 @@ jobs:
 
     steps:
     - uses: actions/checkout@v3
-    - name: Build the Docker image
-      run: docker build . --file Dockerfile-alpine --tag ${{ env.IMAGE_NAME }}
 
     - name: Login to DockerHub
       uses: docker/login-action@v1 
@@ -27,3 +25,4 @@ jobs:
       with:
         push: true
         tags: ${{ env.IMAGE_NAME }}
+        file: Dockerfile-alpine
